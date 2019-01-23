@@ -1,13 +1,14 @@
 from pypresence import Presence
-import time
+import time, json
 import random as r
 
-client_id = "537325185242497036"
+with open('settings.json') as config:
+    config = json.load(config)
+client_id = config['client_id'] #Why the fuck did i do that?
 
 RPC = Presence(client_id=client_id)
 RPC.connect()
 start = time.time().__round__()
-RPC.update(start=start)
 
 maps = ('KOTH Redirect','CP Metalworks','CP Process','CTF 2Fort','CP \"Maze\"')
 classes = ('Drunk scottish boye','Turtle','haha pootis lol','Pocket med trap gf','Hardest class haHAA','Very fast boye from Boston','Jarman','горшок(жив)','Butterknife weilding baguette','a fucking fish.')
@@ -25,8 +26,8 @@ while True:
         d = r.randint(10,50) #DEATHS (IF KILLS <= 0)
     a = r.randint(0,12) #ASSISTS
 
-    print('Rich Presence State Updated!',c,m,g,k,d,a)
+    print('Rich Presence State Updated!\n'+classes[c-1]+' | '+maps[m-1]+' | '+gamemodes[g]+' || '+str(k)+'/'+str(d)+'/'+str(a))
     RPC.update(large_image="map"+str(m), large_text=maps[m-1],
                 small_image="c"+str(c), small_text=classes[c-1],
-                details=gamemodes[g], state=str(k)+'/'+str(d)+'/'+str(a))
+                details=gamemodes[g], state=str(k)+'/'+str(d)+'/'+str(a), start=start)
     time.sleep(r.randint(15,180))
