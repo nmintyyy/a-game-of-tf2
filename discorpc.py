@@ -10,7 +10,7 @@ RPC = Presence(client_id=client_id)
 RPC.connect()
 start = time.time().__round__()
 
-maps = ('KOTH Redirect','CP Metalworks','CP Process','CTF 2Fort','CP \"Maze\"')
+maps = ('koth_redirect','cp_metalworks','cp_process','ctf_2fort','cp_steel','trade_plaza','cp_orange')
 classes = ('Drunk scottish boye','Turtle','haha pootis lol','Pocket med trap gf','Hardest class haHAA','Very fast boye from Boston','Jarman','горшок(жив)','Butterknife weilding baguette','a fucking fish.')
 gamemodes = ('Epic 1v1','Super Competitive 4v4','Competitive 6v6','Less Competitive 7v7','9v9 is a fucking joke','Casual')
 
