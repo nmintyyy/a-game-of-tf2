@@ -16,7 +16,7 @@ gamemodes = ('Epic 1v1','Super Competitive 4v4','Competitive 6v6','Less Competit
 
 while True:
     c = r.randint(1,10) #CLASS
-    m = r.randint(1,5) #MAP
+    m = r.randint(1,7) #MAP
     g = r.randint(0,len(gamemodes)-1) #GAMEMODE (DETAILS)
 
     k = r.randint(-1,35) #KILLS
@@ -24,7 +24,10 @@ while True:
         d = r.randint(0,int(100*1/k)) #DEATHS (IF KILLS > 0)
     else:
         d = r.randint(10,50) #DEATHS (IF KILLS <= 0)
-    a = r.randint(0,12) #ASSISTS
+    if g == 0:
+        a = 0 #ASSISTS (1v1)
+    else:
+        a = r.randint(0,12) #ASSISTS
 
     print('Rich Presence State Updated!\n'+classes[c-1]+' | '+maps[m-1]+' | '+gamemodes[g]+' || '+str(k)+'/'+str(d)+'/'+str(a))
     RPC.update(large_image="map"+str(m), large_text=maps[m-1],
